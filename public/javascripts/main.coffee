@@ -3,15 +3,20 @@ class Beat
     logo = $("#logo")
     offset = logo.offset()
     @paper = Raphael offset.left + 133 , offset.top - 73, 225, 270
+    @animating = false
 
-    @donzDaz()
-    setInterval =>
-      requestAnimationFrame =>
+    interval = setInterval =>
+      if !@animating
         @donzDaz()
     , 12000
 
+    setTimeout =>
+      @donzDaz()
+    , 1200
+
   donzDaz: ->
     @times = 4
+    @animating = true
     @donz()
 
   donz: ->
@@ -40,9 +45,10 @@ class Beat
     if @times
       @times -= 1
       setTimeout =>
-        requestAnimationFrame =>
-          @donz()
+        @donz()
       , 300 * (@times)
+    else
+      @animating = false
 
 beat = new Beat
 

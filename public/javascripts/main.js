@@ -4,21 +4,25 @@
 
   Beat = (function() {
     function Beat() {
-      var logo, offset,
+      var interval, logo, offset,
         _this = this;
       logo = $("#logo");
       offset = logo.offset();
       this.paper = Raphael(offset.left + 133, offset.top - 73, 225, 270);
-      this.donzDaz();
-      setInterval(function() {
-        return requestAnimationFrame(function() {
+      this.animating = false;
+      interval = setInterval(function() {
+        if (!_this.animating) {
           return _this.donzDaz();
-        });
+        }
       }, 12000);
+      setTimeout(function() {
+        return _this.donzDaz();
+      }, 1200);
     }
 
     Beat.prototype.donzDaz = function() {
       this.times = 4;
+      this.animating = true;
       return this.donz();
     };
 
@@ -50,10 +54,10 @@
       if (this.times) {
         this.times -= 1;
         return setTimeout(function() {
-          return requestAnimationFrame(function() {
-            return _this.donz();
-          });
+          return _this.donz();
         }, 300 * this.times);
+      } else {
+        return this.animating = false;
       }
     };
 
