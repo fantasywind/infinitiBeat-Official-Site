@@ -1,0 +1,213 @@
+@-moz-keyframes circle_meta1
+  0% { 
+    -moz-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -moz-transform rotate(-90deg) translateY(-70px)
+    transform rotate(-90deg) translateY(-70px)
+  }
+  100% {
+    -moz-transform rotate(-180deg) translateY(-140px)
+    transform rotate(-180deg) translateY(-140px)
+  }
+@-webkit-keyframes circle_meta1
+  0% { 
+    -webkit-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -webkit-transform rotate(-90deg) translateY(-70px)
+    transform rotate(-90deg) translateY(-70px)
+  }
+  100% {
+    -webkit-transform rotate(-180deg) translateY(-140px)
+    transform rotate(-180deg) translateY(-140px)
+  }
+@keyframes circle_meta1
+  0% { 
+    -ms-transform rotate(0deg) translateY(0px)
+    -o-transform rotate(0deg) translateY(0px)
+    -moz-transform rotate(0deg) translateY(0px)
+    -webkit-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -ms-transform rotate(-90deg) translateY(-70px)
+    -o-transform rotate(-90deg) translateY(-70px)
+    -moz-transform rotate(-90deg) translateY(-70px)
+    -webkit-transform rotate(-90deg) translateY(-70px)
+    transform rotate(-90deg) translateY(-70px)
+  }
+  100% {
+    -ms-transform rotate(-180deg) translateY(-140px)
+    -o-transform rotate(-180deg) translateY(-140px)
+    -moz-transform rotate(-180deg) translateY(-140px)
+    -webkit-transform rotate(-180deg) translateY(-140px)
+    transform rotate(-180deg) translateY(-140px)
+  }
+@-moz-keyframes circle_meta2
+  0% { 
+    -moz-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -moz-transform rotate(90deg) translateY(-70px)
+    transform rotate(90deg) translateY(-70px)
+  }
+  100% {
+    -moz-transform rotate(180deg) translateY(-140px)
+    transform rotate(180deg) translateY(-140px)
+  }
+@-webkit-keyframes circle_meta2
+  0% { 
+    -webkit-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -webkit-transform rotate(90deg) translateY(-70px)
+    transform rotate(90deg) translateY(-70px)
+  }
+  100% {
+    -webkit-transform rotate(180deg) translateY(-140px)
+    transform rotate(180deg) translateY(-140px)
+  }
+@keyframes circle_meta2
+  0% { 
+    -ms-transform rotate(0deg) translateY(0px)
+    -o-transform rotate(0deg) translateY(0px)
+    -moz-transform rotate(0deg) translateY(0px)
+    -webkit-transform rotate(0deg) translateY(0px)
+    transform rotate(0deg) translateY(0px)
+  }
+  50% {
+    -ms-transform rotate(90deg) translateY(-70px)
+    -o-transform rotate(90deg) translateY(-70px)
+    -moz-transform rotate(90deg) translateY(-70px)
+    -webkit-transform rotate(90deg) translateY(-70px)
+    transform rotate(90deg) translateY(-70px)
+  }
+  100% {
+    -ms-transform rotate(180deg) translateY(-140px)
+    -o-transform rotate(180deg) translateY(-140px)
+    -moz-transform rotate(180deg) translateY(-140px)
+    -webkit-transform rotate(180deg) translateY(-140px)
+    transform rotate(180deg) translateY(-140px)
+  }
+html, body
+  height 100%
+  background-color rgb(76, 76, 74)
+.container
+  width 960px
+  margin 0 auto
+#header
+  padding 105px 0 30px 60px
+#logo
+  margin 0 auto
+  background-image url("/images/logo.png")
+  width 520px
+  height 139px
+  position relative
+  z-index 999
+.member-avatar
+  cursor pointer
+.member-avatar, .member-meta1, .member-meta2
+  display block
+  width 150px
+  height 150px
+  border-radius 75px
+  background-color #DDD
+  position relative
+  z-index 10
+.member-meta1
+  z-index 9
+  top -150px
+  > span
+    display inline-block
+    margin 64px 0 0 33px
+    font-size 1.5em
+    letter-spacing 0.25em
+.member-meta2
+  z-index 8
+  top -300px
+  > span
+    display inline-block
+    margin 69px 0 0 30px
+    font-size 1em
+#members
+  list-style none
+  margin-top 165px
+  width 100%
+  > li
+    float left
+    margin 0 20px
+  [data-member='chaiyupai']
+    > .member-avatar
+      background-image url("/images/avatar/chaiyupai-gs.png")
+    > .member-meta1, .member-meta2
+      background-color #1abc9c
+  [data-member='eric']
+    > .member-avatar
+      background-image url("/images/avatar/eric-gs.png")
+    > .member-meta1, .member-meta2
+      background-color #ecf0f1
+  [data-member='blue']
+    > .member-avatar
+      background-image url("/images/avatar/eric-gs.png")
+    > .member-meta1, .member-meta2
+      background-color #3498db
+  [data-member='gs']
+    > .member-avatar
+      background-image url("/images/avatar/gs-gs.png")
+    > .member-meta1, .member-meta2
+      background-color #e67e22
+  [data-member='yswu']
+    > .member-avatar
+      background-image url("/images/avatar/gs-gs.png")
+    > .member-meta1, .member-meta2
+      background-color #e74c3c
+  > li:hover:not(.animate-step1)
+    > .member-meta1
+      -ms-animation circle_meta1 0.3s linear 1
+      -o-animation circle_meta1 0.3s linear 1
+      -moz-animation circle_meta1 0.3s linear 1
+      -webkit-animation circle_meta1 0.3s linear 1
+      animation circle_meta1 0.3s linear 1
+li.animate-step1
+  > .member-meta1
+    -ms-transform translateY(140px)
+    -o-transform translateY(140px)
+    -moz-transform translateY(140px)
+    -webkit-transform translateY(140px)
+    transform translateY(140px)
+  > .member-meta2
+    top -160px
+    -ms-animation circle_meta2 0.3s linear 1
+    -o-animation circle_meta2 0.3s linear 1
+    -moz-animation circle_meta2 0.3s linear 1
+    -webkit-animation circle_meta2 0.3s linear 1
+    animation circle_meta2 0.3s linear 1
+    -ms-animation-delay 0.05s
+    -o-animation-delay 0.05s
+    -moz-animation-delay 0.05s
+    -webkit-animation-delay 0.05s
+    animation-delay 0.05s
+li.animate-step2
+  > .member-meta2
+    -ms-transform translateY(140px)
+    -o-transform translateY(140px)
+    -moz-transform translateY(140px)
+    -webkit-transform translateY(140px)
+    transform translateY(140px)
+#footer
+  width 100%
+  position fixed
+  bottom 8px
+  color #DDD
+  font-size 0.85em
+  text-align center
+  padding-left 35px
+  > span
+    margin 0 3.2em
+svg
+  z-index 1
