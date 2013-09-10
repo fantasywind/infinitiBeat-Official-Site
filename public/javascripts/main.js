@@ -68,11 +68,43 @@
   beat = new Beat;
 
   $("#members").delegate('.member-meta1', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', function(e) {
-    return $(this).parent().addClass('animate-step1');
+    var parent;
+    parent = $(this).parent();
+    if (parent.hasClass('animate-step4')) {
+      return parent.removeClass('animate-step1 animate-step2 animate-step3 animate-step4');
+    } else {
+      return parent.addClass('animate-step1');
+    }
   });
 
   $("#members").delegate('.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', function(e) {
-    return $(this).parent().addClass('animate-step2');
+    var parent;
+    parent = $(this).parent();
+    if (parent.hasClass('animate-step3')) {
+      return parent.addClass('animate-step4');
+    } else {
+      return parent.addClass('animate-step2');
+    }
+  });
+
+  $("#members").delegate('li[data-member]', 'mouseenter', function(e) {
+    return $(this).data('hover', true);
+  });
+
+  $("#members").delegate('li[data-member]', 'mouseleave', function(e) {
+    var $this, timeout,
+      _this = this;
+    $this = $(this);
+    $this.data('hover', false);
+    timeout = $this.data('timeout');
+    if (timeout != null) {
+      clearTimeout(timeout);
+    }
+    return $this.data('timeout', setTimeout(function() {
+      if ($this.hasClass('animate-step2') && $this.data('hover') === false) {
+        return $this.addClass('animate-step3');
+      }
+    }, 3000));
   });
 
 }).call(this);

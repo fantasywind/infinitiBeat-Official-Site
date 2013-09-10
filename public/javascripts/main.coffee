@@ -54,6 +54,25 @@ beat = new Beat
 
 # 個人資料
 $("#members").delegate '.member-meta1', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
-  $(@).parent().addClass('animate-step1')
+  parent = $(@).parent()
+  if parent.hasClass('animate-step4')
+    parent.removeClass('animate-step1 animate-step2 animate-step3 animate-step4')
+  else
+    parent.addClass('animate-step1')
 $("#members").delegate '.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
-  $(@).parent().addClass('animate-step2')
+  parent = $(@).parent()
+  if parent.hasClass('animate-step3')
+    parent.addClass('animate-step4')
+  else
+    parent.addClass('animate-step2')
+$("#members").delegate 'li[data-member]', 'mouseenter', (e)->
+  $(@).data('hover', true)
+$("#members").delegate 'li[data-member]', 'mouseleave', (e)->
+  $this = $(@)
+  $this.data('hover', false)
+  timeout = $this.data('timeout')
+  if timeout?
+    clearTimeout timeout
+  $this.data 'timeout', setTimeout =>
+    $this.addClass 'animate-step3' if $this.hasClass('animate-step2') and $this.data('hover') is false
+  , 3000
