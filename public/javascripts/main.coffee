@@ -94,6 +94,7 @@ class Beat
   donzDaz: ->
     @times = 4
     @animating = true
+    @paper.clear()
     @donz()
 
   donz: ->

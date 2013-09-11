@@ -56,6 +56,7 @@
     Beat.prototype.donzDaz = function() {
       this.times = 4;
       this.animating = true;
+      this.paper.clear();
       return this.donz();
     };
 
