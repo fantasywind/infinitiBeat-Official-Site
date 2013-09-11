@@ -94,6 +94,11 @@ members.delegate 'li[data-member]', 'mouseleave', (e)->
   , 3000
 # 顯示個人資料
 members.delegate '.member-meta2:not(.active)', 'click', (e)->
+  # 資訊
+  infobox = $("<div>")
+    .addClass('infobox')
+    .appendTo("body")
+  # 動畫
   $this = $(@)
   scale = Math.ceil((window.outerWidth - 200) / 150)
   $this.addClass 'active'
