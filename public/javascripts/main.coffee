@@ -52,27 +52,92 @@ class Beat
 
 beat = new Beat
 
+members = $("#members")
 # 個人資料
-$("#members").delegate '.member-meta1', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
+members.delegate '.member-meta1', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
   parent = $(@).parent()
   if parent.hasClass('animate-step4')
+    parent.find('.member-meta2').css
+      position: ''
+      left: ''
+      top: ''
     parent.removeClass('animate-step1 animate-step2 animate-step3 animate-step4')
   else
     parent.addClass('animate-step1')
-$("#members").delegate '.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
+members.delegate '.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationend', (e)->
   parent = $(@).parent()
   if parent.hasClass('animate-step3')
     parent.addClass('animate-step4')
   else
     parent.addClass('animate-step2')
-$("#members").delegate 'li[data-member]', 'mouseenter', (e)->
+    $this = $(@)
+    offset = $this.offset()
+    console.dir offset
+    $this.css
+      position: 'absolute'
+      left: offset.left
+      top: offset.top - 140
+      zIndex: 8
+    $this.data 'offset', 
+      left: offset.left
+      top: offset.top - 140
+members.delegate 'li[data-member]', 'mouseenter', (e)->
   $(@).data('hover', true)
-$("#members").delegate 'li[data-member]', 'mouseleave', (e)->
+members.delegate 'li[data-member]', 'mouseleave', (e)->
   $this = $(@)
   $this.data('hover', false)
   timeout = $this.data('timeout')
   if timeout?
     clearTimeout timeout
   $this.data 'timeout', setTimeout =>
-    $this.addClass 'animate-step3' if $this.hasClass('animate-step2') and $this.data('hover') is false
+    $this.addClass 'animate-step3' if $this.hasClass('animate-step2') and $this.data('hover') is false and !$this.find('.member-meta2').hasClass('active')
   , 3000
+# 顯示個人資料
+members.delegate '.member-meta2:not(.active)', 'click', (e)->
+  $this = $(@)
+  scale = Math.ceil((window.outerWidth - 200) / 150)
+  $this.addClass 'active'
+  $this.css
+    position: 'fixed'
+    left: '46%'
+    top: '50%'
+    '-ms-transform': "scale(#{scale})"
+    '-o-transform': "scale(#{scale})"
+    '-moz-transform': "scale(#{scale})"
+    '-webkit-transform': "scale(#{scale})"
+    'transform': "scale(#{scale})"
+    zIndex: 999
+  members.data 'activeInfo', $this
+members.delegate '.member-meta2.active', 'webkitTransitionEnd transitionend', (e)->
+  $(@).addClass 'actived'
+$("body").on 'click', (e)->
+  activeInfo = members.data('activeInfo')
+  if activeInfo? and activeInfo.hasClass('actived') and e.target is document.body
+    offset = activeInfo.data 'offset'
+    # 收回定位
+    activeInfo.on 'webkitTransitionEnd transitionend', ->
+      offset = activeInfo.data 'offset'
+      activeInfo.css
+        zIndex: ''
+        position: 'absolute'
+        left: offset.left
+        top: offset.top
+        '-ms-transform': ''
+        '-o-transform': ''
+        '-moz-transform': ''
+        '-webkit-transform': ''
+        'transform': ''
+      activeInfo.removeClass 'active actived'
+      activeInfo.off 'webkitTransitionEnd transitionend'
+    # 準備定位
+    activeInfo.css
+      left: offset.left
+      top: offset.top
+      zIndex: 8
+      position: 'fixed'
+      '-ms-transform': 'scale(1)'
+      '-o-transform': 'scale(1)'
+      '-moz-transform': 'scale(1)'
+      '-webkit-transform': 'scale(1)'
+      'transform': 'scale(1)'
+    members.removeData('activeInfo')
