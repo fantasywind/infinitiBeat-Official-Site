@@ -204,6 +204,15 @@ members.delegate '.member-meta2:not(.active)', 'click', (e)->
 members.delegate '.member-meta2.active', 'webkitTransitionEnd transitionend', (e)->
   $(@).addClass 'actived'
   $(".infobox").addClass 'active'
+
+trigger = false
+  
+$(window).on 'keyup', (e)->
+  key = e.which || e.keyCode
+  if key is 27
+    trigger = true
+    $("body").trigger 'click'
+
 # 點擊最外
 $("body").on 'click', (e)->
   activeInfo = members.data('activeInfo')
@@ -216,7 +225,8 @@ $("body").on 'click', (e)->
         y: offset.top + 150 * scale / 2
       members.data('circleCenter', cc)
     distance = Math.sqrt(Math.pow(e.clientX - cc.x, 2) + Math.pow(e.clientY - cc.y, 2))
-    if distance > scale / 2 * 150
+    if distance > scale / 2 * 150 or trigger is true
+      trigger = false
       offset = activeInfo.data 'offset'
       # 收回定位
       activeInfo.on 'webkitTransitionEnd transitionend', ->
