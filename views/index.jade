@@ -6,35 +6,49 @@ block content
       p service@infinitibeat.com
       p 新北市三峽區大德路103號8樓
     div#logo(role='logo')
+    div#service
+      p 資訊 Information
+      p 設計 Design
+      p 解決方案 Solution
   div#main(role='main')
     ul#members
       li(data-member='chaiyupai')
         div.member-avatar
         div.member-meta1
-          span 白家宇
+          span.circle-name 白家宇
+          span.circle-title 原始碼產生器
         div.member-meta2
-          span 程式碼產生器
+          div.profile-draft
       li(data-member='gs')
         div.member-avatar
         div.member-meta1
-          span 石展丞
+          span.circle-name 石展丞
+          span.circle-title 心靈混合魔法師
         div.member-meta2
-          span 心靈凌魔法師
+          div.profile-draft
       li(data-member='eric')
         div.member-avatar
         div.member-meta1
-          span 白昌永
+          span.circle-name 白昌永
+          span.circle-title 增壓引擎肌肉男
         div.member-meta2
-          span 超粗肌肉棒子
+          div.profile-draft
       li(data-member='yswu')
         div.member-avatar
         div.member-meta1
-          span 吳昱昇
+          span.circle-name 吳昱昇
+          span.circle-title 國軍水電技師
         div.member-meta2
-          span 國軍水電技師
+          div.profile-draft
       li(data-member='blue')
         div.member-avatar
         div.member-meta1
-          span 藍鼎鈞
+          span.circle-name 藍鼎鈞
+          span.circle-title 設計概念聚合物
         div.member-meta2
-          span 隨便塗鴉的人
+          div.profile-draft
+  script#infobox-tmpl(type='text/template')
+    h1.member-name <%= name %>
+    h2.member-title <%= title%>
+    div.member-educational <%= educational%>
+    div.member-experience <%= experience%>

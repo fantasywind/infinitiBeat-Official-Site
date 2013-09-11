@@ -252,18 +252,41 @@ html, body
   z-index 9
   top -150px
   > span
+    width 150px
+    text-align center
     display inline-block
-    margin 64px 0 0 33px
-    font-size 1.5em
     letter-spacing 0.25em
+    margin-left 4px
+    &.circle-name
+      margin-top 54px
+      font-size 1.5em
+    &.circle-title
+      margin-top 9px
+      font-size 0.75em
 .member-meta2
-  cursor pointer
+  //cursor pointer
+  cursor url(/images/zoomin.png), pointer
+  //cursor -webkit-zoom-in
+  //cursor -moz-zoom-in
+  //cursor zoom-in
   z-index 8
   top -300px
   > span
     display inline-block
     margin 69px 0 0 30px
     font-size 1em
+.profile-draft
+  width 100%
+  height 100%
+  display block
+  background-repeat no-repeat
+  background-position 30px 23px
+  opacity 1
+  -ms-transition all 0.3s ease-out
+  -o-transition all 0.3s ease-out
+  -moz-transition all 0.3s ease-out
+  -webkit-transition all 0.3s ease-out
+  transition all 0.3s ease-out
 #members
   list-style none
   margin-top 100px
@@ -276,26 +299,36 @@ html, body
       background-image url("/images/avatar/avatar_pa.jpg")
     > .member-meta1, .member-meta2
       background-color #1abc9c
+    .profile-draft
+      background-image url("/images/profile/profile_pa.png")
   [data-member='eric']
     > .member-avatar
       background-image url("/images/avatar/avatar_en.jpg")
     > .member-meta1, .member-meta2
       background-color #ecf0f1
+    .profile-draft
+      background-image url("/images/profile/profile_en.png")
   [data-member='blue']
     > .member-avatar
       background-image url("/images/avatar/avatar_bs.jpg")
     > .member-meta1, .member-meta2
       background-color #3498db
+    .profile-draft
+      background-image url("/images/profile/profile_bs.png")
   [data-member='gs']
     > .member-avatar
       background-image url("/images/avatar/avatar_gs.jpg")
     > .member-meta1, .member-meta2
       background-color #e67e22
+    .profile-draft
+      background-image url("/images/profile/profile_gs.png")
   [data-member='yswu']
     > .member-avatar
       background-image url("/images/avatar/avatar_ys.jpg")
     > .member-meta1, .member-meta2
       background-color #e78075
+    .profile-draft
+      background-image url("/images/profile/profile_ys.png")
   > li:hover:not(.animate-step1)
     > .member-meta1
       -ms-animation circle_meta1 0.3s linear 1
@@ -341,6 +374,8 @@ li.animate-step2
       -moz-transition all 0.3s ease-out
       -webkit-transition all 0.3s ease-out
       transition all 0.3s ease-out
+      > .profile-draft
+        opacity 0
 li.animate-step3
   > .member-meta2
     -ms-animation circle_meta3 0.3s linear 1
@@ -382,3 +417,32 @@ li.animate-step4
     margin 0.6em 0
 svg
   z-index 1
+.infobox
+  padding-left 15%
+  padding-top 10%
+  width 65%
+  height 80%
+  position fixed
+  top 5%
+  left 10%
+  z-index 1000
+  -ms-transition all 0.3s ease-out
+  -o-transition all 0.3s ease-out
+  -moz-transition all 0.3s ease-out
+  -webkit-transition all 0.3s ease-out
+  transition all 0.3s ease-out
+  opacity 0
+  &.active
+    opacity 1
+.member-educational
+  margin-top 3em
+.member-experience
+  margin-top 5em
+#service
+  float right
+  position relative
+  top -76px
+  color #222
+  right 40px
+  > p
+    margin 7px 0
