@@ -283,7 +283,8 @@ body {
 #members [data-member='yswu'] .profile-draft {
   background-image: url("/images/profile/profile_ys.png");
 }
-#members > li:hover:not(.animate-step1) > .member-meta1 {
+#members > li:hover:not(.animate-step1) > .member-meta1,
+#members > li:active:not(.animate-step1) > .member-meta1 {
   -ms-animation: circle_meta1 0.3s linear 1;
   -o-animation: circle_meta1 0.3s linear 1;
   -moz-animation: circle_meta1 0.3s linear 1;

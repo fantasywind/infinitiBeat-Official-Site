@@ -143,7 +143,7 @@
     }
   });
 
-  members.delegate('li[data-member]', 'mouseenter', function(e) {
+  members.delegate('li[data-member]', 'mouseenter click', function(e) {
     return $(this).data('hover', true);
   });
 

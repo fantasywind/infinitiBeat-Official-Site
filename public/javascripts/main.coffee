@@ -160,7 +160,7 @@ members.delegate '.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimatio
     $this.data 'offset', 
       left: offset.left
       top: offset.top - 140
-members.delegate 'li[data-member]', 'mouseenter', (e)->
+members.delegate 'li[data-member]', 'mouseenter click', (e)->
   $(@).data('hover', true)
 members.delegate 'li[data-member]', 'mouseleave', (e)->
   $this = $(@)

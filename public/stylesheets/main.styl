@@ -264,11 +264,7 @@ html, body
       margin-top 9px
       font-size 0.75em
 .member-meta2
-  //cursor pointer
   cursor url(/images/zoomin.png), pointer
-  //cursor -webkit-zoom-in
-  //cursor -moz-zoom-in
-  //cursor zoom-in
   z-index 8
   top -300px
   > span
@@ -329,7 +325,7 @@ html, body
       background-color #e78075
     .profile-draft
       background-image url("/images/profile/profile_ys.png")
-  > li:hover:not(.animate-step1)
+  > li:hover:not(.animate-step1), > li:active:not(.animate-step1)
     > .member-meta1
       -ms-animation circle_meta1 0.3s linear 1
       -o-animation circle_meta1 0.3s linear 1
