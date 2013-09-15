@@ -129,7 +129,6 @@
       parent.addClass('animate-step2');
       $this = $(this);
       offset = $this.offset();
-      console.dir(offset);
       $this.css({
         position: 'absolute',
         left: offset.left,

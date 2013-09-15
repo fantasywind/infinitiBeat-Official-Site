@@ -151,7 +151,6 @@ members.delegate '.member-meta2', 'webkitAnimationEnd mozAnimationEnd msAnimatio
     parent.addClass('animate-step2')
     $this = $(@)
     offset = $this.offset()
-    console.dir offset
     $this.css
       position: 'absolute'
       left: offset.left
